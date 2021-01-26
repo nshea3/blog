@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>The birthday problem here and elsewhere | nshea_techblog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="The birthday problem here and elsewhere" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="nshea_techblog" />
+<meta property="og:description" content="nshea_techblog" />
+<link rel="canonical" href="https://nshea3.github.io/blog/2021/01/19/Birthday-problem-here-and-elsewhere.html" />
+<meta property="og:url" content="https://nshea3.github.io/blog/2021/01/19/Birthday-problem-here-and-elsewhere.html" />
+<meta property="og:site_name" content="nshea_techblog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-19T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"nshea_techblog","url":"https://nshea3.github.io/blog/2021/01/19/Birthday-problem-here-and-elsewhere.html","@type":"BlogPosting","headline":"The birthday problem here and elsewhere","dateModified":"2021-01-19T00:00:00-06:00","datePublished":"2021-01-19T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nshea3.github.io/blog/2021/01/19/Birthday-problem-here-and-elsewhere.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nshea3.github.io/blog/feed.xml" title="nshea_techblog" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">nshea_techblog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">The birthday problem here and elsewhere</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-01-19T00:00:00-06:00" itemprop="datePublished">
+        Jan 19, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      3 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/nshea3/blog/tree/master/_notebooks/2021-01-19-Birthday-problem-here-and-elsewhere.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/nshea3/blog/master?filepath=_notebooks%2F2021-01-19-Birthday-problem-here-and-elsewhere.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/nshea3/blog/blob/master/_notebooks/2021-01-19-Birthday-problem-here-and-elsewhere.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Introduction">Introduction </a></li>
+<li class="toc-entry toc-h2"><a href="#Birthday-Problem-Here">Birthday Problem Here </a></li>
+<li class="toc-entry toc-h2"><a href="#Birthday-Problem-Elsewhere">Birthday Problem Elsewhere </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-01-19-Birthday-problem-here-and-elsewhere.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Introduction">
+<a class="anchor" href="#Introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction<a class="anchor-link" href="#Introduction"> </a>
+</h2>
+<p>The birthday problem is a classic probabilistic puzzle concerning the probability of any two people among $n$ people in a group sharing the same birthday.</p>
+<blockquote>
+<p>In a group of $n$ people, what is the probability that two of these people share a birthday?</p>
+</blockquote>
+<p>The intuition around the puzzle is very misleading, so much so that it is sometimes called the birthday <em>paradox</em>, even though there is ultimately no paradox in the problem or its solution.</p>
+<h2 id="Birthday-Problem-Here">
+<a class="anchor" href="#Birthday-Problem-Here" aria-hidden="true"><span class="octicon octicon-link"></span></a>Birthday Problem <em>Here</em><a class="anchor-link" href="#Birthday-Problem-Here"> </a>
+</h2>
+<p>In fact, given some reasonable assumptions, there is a simple closed form expression for the probability:$p(n)=\frac{365 !}{365^{n}(365-n) !}$</p>
+<p>under the assumption that all $n$ birthdays are drawn uniformly at random from 365 possible dates.</p>
+<p>However, this model leads to some very surprising results when we consider the probabilities of finding shared birthdays in groups of different size $n$.</p>
+<p>We can ask more interesting questions: for instance, what group size $n$ would result in a 50% chance of a shared birthday within the group? As an upper bound on $n$, a party of size $n=366$ <em>must</em> have two individuals that share the same birthday, for $p=1.0$, since there are only 365 unique birthdays to be assigned <a href="https://en.wikipedia.org/wiki/Pigeonhole_principle">(by the famous <strong><em>pigeonhole principle</em></strong>)</a>.  The answer for $p=0.5$, it turns out, is only $n=23$.</p>
+<p><strong><em>There is &gt;50% probability that among a group of 23 people, 2 share a birthday!</em></strong></p>
+<p>This is such a surprising conclusion that the whole problem is sometimes called a <em>paradox</em>!</p>
+<p>Fortunately, verifying this result can be done with simulation just as well as with analytical methods. The code below assembles groups individual by individual, stopping when two individuals share a birthday. This is detected when a <code>list</code> of day numbers differs in size from a <code>set</code> of day numbers, because a <code>set</code> discards duplicates while a <code>list</code> does not:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">birthday_sim</span><span class="p">(</span><span class="n">n_days</span><span class="o">=</span><span class="mi">365</span><span class="p">):</span>
+  <span class="n">dates</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">dates</span><span class="p">))</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">):</span>
+    <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n_days</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+  <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This code can easily run 100,000 simulations:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sims_100k</span> <span class="o">=</span> <span class="p">[</span><span class="n">birthday_sim</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The distribution is right-skewed, which we'd expect with a distribution centered at near 20 but taking values up to 365. The peak near 20 confirms the conclusion above that a value in this area corresponds to the 50th percentile, or the approximation of $p=0.5$ in this sample.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">hist100k</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sims_100k</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">89</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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%0A">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The median represents the 50th percentile/2nd quantile/50% probability and sits exactly at 23:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statistics</span>
+
+<span class="n">statistics</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">sims_100k</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>23.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The CDF gives a nice view of the problem: now we can read off the probabilities and the corresponding group size $n$. Here we find a few more surprising conclusions: we hit 80% probability of having a shared birthday just under $n=40$, and a 90% probability just over $n=40$.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hist100k</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sims_100k</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">89</span><span class="p">,</span> <span class="n">cumulative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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%0A">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In group sizes over $n=60$ finding a shared birthday should be a near certainty. <a href="https://en.wikipedia.org/wiki/Birthday_problem#Calculating_the_probability">The table</a> puts the probability at 99.4% where $n=60$.</p>
+<p>This phenomenon is likely so unintuitive partially because the question is misunderstood. "Find any two people with the same birthday" can so easily be misunderstood as "Select one person, and find another person with the same birthday", or "find one person in the group that shares MY birthday". Neither of these is the correct interpretation. There is no need to match a specific person, or a specific date. These interpretations lack the combinatorial characteristic that makes these probabilities so high for low $n$; there are just so many different ways of combining $n$ people into groups of two!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Birthday-Problem-Elsewhere">
+<a class="anchor" href="#Birthday-Problem-Elsewhere" aria-hidden="true"><span class="octicon octicon-link"></span></a>Birthday Problem Elsewhere<a class="anchor-link" href="#Birthday-Problem-Elsewhere"> </a>
+</h2>
+<p>Another advantage of the simulation method is <em>flexibility</em>. If we imagine we're meeting groups of $n$ individuals born on a different planet with a different year length, there is no need to re-derive the equation above because the simulation method adapts seamlessly to the new problem. We simply have to change the <code>n_days</code> parameter.</p>
+<p>For example, a single year lasts 88 earth days on Mercury (though a Mercury day lasts 2 Mercury years!):</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mercury_sims_100k</span> <span class="o">=</span> <span class="p">[</span><span class="n">birthday_sim</span><span class="p">(</span><span class="mi">88</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">)]</span>
+
+<span class="n">hist100k</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mercury_sims_100k</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">39</span><span class="p">,</span> <span class="n">cumulative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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%0A">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">statistics</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">mercury_sims_100k</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>12.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So the corresponding value for 50% probability on Mercury? $n=12$.</p>
+<p>Clearly, the simulation technique is well suited to this problem - in fact, this class of problems - and might even be considered an improvement on the available analytical methods!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="nshea3/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/2021/01/19/Birthday-problem-here-and-elsewhere.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>nshea_techblog</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/nshea3" title="nshea3"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/nicholassh34" title="nicholassh34"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
