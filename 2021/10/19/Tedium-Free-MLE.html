@@ -395,7 +395,7 @@ $\displaystyle - \frac{\lambda^{6} e^{- 3 \lambda}}{4} + \frac{\lambda^{5} e^{- 
 <h2 id="Complications">
 <a class="anchor" href="#Complications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Complications<a class="anchor-link" href="#Complications"> </a>
 </h2>
-<p>There is a slight wrinkle with this approach. It is not widely this approach, MLE can be difficult for computers too.</p>
+<p>There is a slight wrinkle with this approach. It is susceptible to numerical instability, which (luckily) did not affect us in this example. This is how MLE can become difficult for computers too.</p>
 <p>Likelihoods are usually very small numbers and computers simply can't track numbers that are too small or too large. Multiplying very small numbers together repeatedly makes very VERY small numbers that can sometimes disappear completely. Without getting too distracted by the minutiae of numerical stability or underflow, we can still appreciate some bizarre behavior that results when floats are misused:</p>
 
 </div>
